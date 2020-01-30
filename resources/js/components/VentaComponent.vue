@@ -842,7 +842,7 @@
                 });
             },
             cargarPdf(){
-                window.open( '/venta/listarPdf','_blank');
+                window.open(me.ruta + '/venta/listarPdf','_blank');
             },
             selectCliente(){
                 let me=this;
@@ -888,10 +888,10 @@
                 });
             },
             pdfVenta(id){
-                window.open( '/venta/pdf/'+ id );
+                window.open(me.ruta + '/venta/pdf/'+ id );
             },
             pdfTicket(id){
-                window.open( '/venta/pdfTicket/'+ id );
+                window.open(me.ruta + '/venta/pdfTicket/'+ id );
             },
             cambiarPagina(page,buscar,criterio){
                 let me = this;
@@ -1021,7 +1021,7 @@
                     me.codigo='';
                     me.descuento=0;
                     me.arrayDetalle=[];
-                    window.open( '/venta/pdf/'+ response.data.id);
+                    window.open(me.ruta + '/venta/pdf/'+ response.data.id);
 
                 }).catch(function (error) {
                     console.log(error);
