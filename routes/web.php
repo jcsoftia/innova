@@ -124,7 +124,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::delete('/eliminarVenta','VentaController@eliminar');
 
 
-        Route::get('/dashboard','DashboardController');
+        Route::get('/dashboard','DashboardController@mes');
         Route::get('/dashboardDay','DashboardController@day');
     });
     Route::group(['middleware'=>['Vendedor']],function(){
@@ -278,7 +278,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::delete('/eliminarVenta','VentaController@eliminar');
 
 
-        Route::get('/dashboard','DashboardController');
+        Route::get('/dashboard', 'DashboardController@mes');
         Route::get('/dashboardDay','DashboardController@day');
     });
 });
