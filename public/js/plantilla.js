@@ -501,7 +501,7 @@
             this.$leftMenuButton = $('.button-menu-mobile'),
             this.$menuItem = $('.has_sub > a')
     };
-    
+
     MainApp.prototype.initSlimscroll = function () {
         $('.slimscroll').slimscroll({
             height: 'auto',
@@ -532,7 +532,7 @@
     MainApp.prototype.initActiveMenu = function () {
         $(".navigation-menu a").each(function () {
             var pageUrl = window.location.href.split(/[?#]/)[0];
-            if (this.href == pageUrl) { 
+            if (this.href == pageUrl) {
                 $(this).parent().addClass("active"); // add active to li of the current link
                 $(this).parent().parent().parent().addClass("active"); // add active class to an anchor
                 $(this).parent().parent().parent().parent().parent().addClass("active"); // add active class to an anchor

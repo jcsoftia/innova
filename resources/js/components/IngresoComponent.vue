@@ -8,7 +8,7 @@
                 <!-- Ejemplo de tabla Listado -->
                 <div class="card">
                     <div class="card-header">
-                        <font-awesome-icon class="ml-1" :icon="['fas', 'align-justify']"/> Ingresos
+                        <img width="20rem" src="../../assets/burger.svg" alt=""> Ingresos
                         <button type="button" @click="mostrarDetalle()" class="btn btn-secondary">
                             <i class="icon-plus"></i>&nbsp;Nuevo
                         </button>
@@ -54,7 +54,9 @@
                                     </v-flex>
                                     <v-flex xs12 sm1 >
                                         <v-btn @click="listarIngreso(1,buscar,criterio)" depressed large color="primary">
-                                            <img width="20em" src="../../assets/zoom.svg" alt="" srcset="">
+                                            <img width="20em" src="http://innova.deliverygasperu.com/public/images/zoom.svg" alt="" srcset="">
+
+
                                         </v-btn>
                                     </v-flex>
                                 </v-layout>
@@ -250,7 +252,9 @@
                                                 </v-flex>
                                                 <v-flex xs12 sm1 >
                                                     <v-btn @click="listarmedicamento(buscarA,criterioA)" depressed large color="primary">
-                                                        <img width="20em" src="../../assets/zoom.svg" alt="" srcset="">
+                                                        <img width="20em" src="http://innova.deliverygasperu.com/public/images/zoom.svg" alt="" srcset="">
+
+
                                                     </v-btn>
                                                 </v-flex>
                                             </v-layout>
@@ -611,7 +615,7 @@
                 cantidad:1,
                 descuento: 0,
                 stock:0,
-                tipo: ['BOLETA','FACTURA','TICKET'],
+                tipo: ['BOLETA','FACTURA'],
                 vencimiento: '',
                 lote: '',
                 busqueda: ['codigo','nombre'

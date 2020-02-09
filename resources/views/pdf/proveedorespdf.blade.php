@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Reporte de Proveedores</title>
     <style>
+        tr,td{
+            text-align: center;
+        }
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             font-size: 0.875rem;
             font-weight: normal;
             line-height: 1.5;
-            color: #151b1e;           
+            color: #151b1e;
         }
         .table {
             display: table;
@@ -108,12 +111,12 @@
                     <td>{{$p->contacto}}</td>
                     <td>{{$p->telefono_contacto}}</td>
                 </tr>
-                @endforeach                                
+                @endforeach
             </tbody>
         </table>
     </div>
     <div class="izquierda">
         <p><strong>Total de registros: </strong>{{$cont}}</p>
-    </div>    
+    </div>
 </body>
 </html>

@@ -8,7 +8,9 @@
                 <!-- Ejemplo de tabla Listado -->
                 <div class="card">
                     <div class="card-header">
-                        <img width="20em" src="../../assets/zoom.svg" alt="" srcset="">Ingresos
+                        <img width="20em" src="http://innova.deliverygasperu.com/public/images/zoom.svg" alt="" srcset="">
+
+Ingresos
                         <button type="button" @click="mostrarDetalle()" class="btn btn-secondary">
                             <i class="icon-plus"></i>&nbsp;Nuevo
                         </button>
@@ -114,8 +116,7 @@
                                     <select class="form-control" v-model="tipo_comprobante">
                                         <option value="0">Seleccione</option>
                                         <option value="BOLETA">Boleta</option>
-                                        <option value="FACTURA">Factura</option>
-                                        <option value="TICKET">Ticket</option>
+                                        <!-- <option value="FACTURA">Factura</option> -->
                                     </select>
                                 </div>
                             </div>

@@ -155,6 +155,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/ingreso/obtenerCabecera', 'IngresoController@obtenerCabecera');
         Route::get('/ingreso/obtenerDetalles', 'IngresoController@obtenerDetalles');
         Route::get('/ingreso/pdf/{id}','IngresoController@pdf')->name('ingreso_pdf');
+        Route::get('/ingreso/pdfTicket/{id}','IngresoController@pdfTicket')->name('ingresoticket_pdf');
         Route::get('/ingreso/listarPdf','IngresoController@listarPdf')->name('ingresos_pdf');
         // Parte de VENTAS
 

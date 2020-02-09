@@ -1,4 +1,5 @@
-<!DOCTYPE>
+<!DOCTYPE html>
+<html lang="es">
 <html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,16 @@
     <style>
         @charset "utf-8";
         /* CSS Document */
+        tr,td{
+            text-align: center;
+        }
         body {
             margin: 10px; padding: 0;
             background-image: url(../img/fondo.png);
             background-repeat: repeat;
             padding-bottom: 1px;
             font-size: 11px;
-            
+
         }
         body, td, th {
             font-family: Arial, Helvetica, sans-serif;
@@ -167,7 +171,7 @@
 
             margin:0 auto;
             padding-top: 20px;
-        } 
+        }
 
         /* Block Content*/
         .block .block_content {
@@ -195,12 +199,12 @@
             -webkit-border-radius: 10px 10px 0px 0px;
             -ms-border-radius: 10px 10px 0px 0px;
 
-            overflow:visible;		
-            
+            overflow:visible;
+
             }
         /* Tool bar */
         .block .tool_bar {
-            
+
         }
 
         .block .tool_bar ul li {
@@ -267,10 +271,10 @@
             color: #666;
             font-size: 11px;
             font-weight: bold;
-            
+
             /*Mozilla Browsers Only */
-            -moz-border-radius: 5px;	
-            
+            -moz-border-radius: 5px;
+
         }
         #icon ul li {
             display: block;
@@ -296,13 +300,13 @@
         .operaciones a:link    { color: #0B55C4; text-decoration: none; }
         .operaciones a:visited { color: #0B55C4; text-decoration: none; }
         .operaciones a:hover   { text-decoration: underline; }
-            
+
         /** toolbar **/
 
         div.toolbar
-        { 
-        float: right; 
-        text-align: right; 
+        {
+        float: right;
+        text-align: right;
         padding: 0;
         margin-right: 20px;
         margin-top:5px;
@@ -362,8 +366,8 @@
             color: #0B55C4;
         }
 
-        /* Estilo por defecto para validacion */  
-        #input:required:invalid {  border: 1px solid red;}  
+        /* Estilo por defecto para validacion */
+        #input:required:invalid {  border: 1px solid red;}
 
         #input:required:valid {  border: 1px solid green;  }
 
@@ -385,7 +389,7 @@
         margin-left:00px;
         border-style: solid;
         border:1px solid  #999;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4); 
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 
         }
         .box_contado{
@@ -418,7 +422,7 @@
 
         }
         .box_contado_dato{
-            
+
         text-align:center;
         font-size:20px;
         font-weight:bold;
@@ -466,7 +470,7 @@
             </tr>
             <tr>
                 <td>Nº de venta: {{$v->serie_comprobante}}-{{$v->num_comprobante}}</td>
-            </tr>    
+            </tr>
         </table>
         @endforeach
         <br>
@@ -479,7 +483,7 @@
             </tr>
             <tr>
             <td colspan="3">==========================================</td>
-            </tr>            
+            </tr>
             <!--$cantidad=0;-->
             @foreach ($detalles as $det)
             <tr>
@@ -508,7 +512,7 @@
             @endforeach
             <tr>
             <td colspan="3">&nbsp;</td>
-            </tr>      
+            </tr>
             <tr>
             <td colspan="3" align="center">¡Gracias por su compra!</td>
             </tr>
@@ -517,7 +521,7 @@
             </tr>
             <tr>
             <td colspan="3" align="center">Chiclayo - Perú</td>
-            </tr>            
+            </tr>
         </table>
         <br>
         </div>

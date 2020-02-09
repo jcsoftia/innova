@@ -23,13 +23,13 @@
                 </div>
                 <template v-if="arrayVentas.length" >
                     <div class="row" >
-                        <div class="box col-md-6" v-for="userVenta in arrayVentas" :key="userVenta.idusuario">
+                        <div class="box col-md-6 shadow" v-for="userVenta in arrayVentas" :key="userVenta.idusuario">
                             <div class="box-header">
-                            <p class="box-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Reporte de ingresos {{userVenta.usuario}}</font></font></p>
+                            <p class="box-title">Reporte de ingresos {{userVenta.usuario}}</p>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body no-padding  table-responsive">
-                                <table class="table table-sm table-info">
+                                <table class="table table-sm bg-table no-p-m">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -48,10 +48,10 @@
                                             <!-- <td scope="col" v-text="userVenta.CantVenta"></td> -->
                                             <td scope="col" class="label label-warning" v-text="'S/ '+userVenta.total"></td>
                                         </tr>
-                                        <tr style="background-color: #CEECF5;">
+                                        <tr class="bg-footer">
                                             <td colspan="2" align="right"><strong>Total</strong></td>
                                             <td class="" >Ingresos</td>
-                                            <td class="badge bg-green" v-text="'S/ '+userVenta.total"></td>
+                                            <td class="" v-text="'S/ '+userVenta.total"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -138,18 +138,36 @@
 *{
     box-sizing: border-box;
 }
+.no-p-m{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.box-title{
+    margin: 0 !important;
+    padding: .5rem !important;
+}
 .box-header{
     text-align: center;
-    background: #02698f;
-    color: white;
-    font-weight: bold !important;
+   background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+   font-weight: bold !important;
     text-transform: uppercase;
     padding: 0.5rem;
     border-radius: 1rem 1rem 0 0 ;
 }
-.badge{
-    margin-top: .3em;
-    margin-bottom: .3em;
+.box-body{
+    border-radius: 0 0 1rem 1rem;
+}
+
+.shadow{
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23) !important;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+}
+.shadow:hover{
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22) !important;
 }
 .label{
     display: inline-block;
@@ -186,6 +204,15 @@ label.fecha{
 .datepicker__date div input{
     cursor: pointer;
 }
+.bg-table{
 
+    background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+}
+.bg-footer{
+    background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+}
+p{
+
+}
 </style>
 

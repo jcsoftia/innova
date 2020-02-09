@@ -1,6 +1,7 @@
-<!DOCTYPE>
-<html>
-    <meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Reporte de Venta</title>
@@ -12,7 +13,7 @@
         /*margin: 0 auto; */
         /*color: #555555;*/
         /*background: #FFFFFF; */
-        font-family: Arial, sans-serif; 
+        font-family: Arial, sans-serif;
         font-size: 14px;
         /*font-family: SourceSansPro;*/
         }
@@ -76,7 +77,7 @@
         padding: 20px;
         background: #2183E3;
         text-align: left;
-        border-bottom: 1px solid #FFFFFF;  
+        border-bottom: 1px solid #FFFFFF;
         }
 
         #facvendedor{
@@ -90,7 +91,7 @@
         padding: 20px;
         background: #2183E3;
         text-align: center;
-        border-bottom: 1px solid #FFFFFF;  
+        border-bottom: 1px solid #FFFFFF;
         }
 
         #facarticulo{
@@ -104,18 +105,22 @@
         padding: 20px;
         background: #2183E3;
         text-align: center;
-        border-bottom: 1px solid #FFFFFF;  
+        border-bottom: 1px solid #FFFFFF;
         }
 
         #gracias{
-        text-align: center; 
+        text-align: center;
+        }
+        tr,td{
+            text-align: center;
         }
     </style>
+    </head>
     <body>
         @foreach ($venta as $v)
         <header>
             <div id="logo">
-                <img src="img/logo2.png" alt="Innova Dent" id="imagen">
+                <img src="icon.png" alt="Innova Dent" id="imagen">
             </div>
             <div id="datos">
                 <p id="encabezado">
@@ -131,7 +136,7 @@
         <section>
             <div>
                 <table id="facliente">
-                    <thead>                        
+                    <thead>
                         <tr>
                             <th id="fac">Cliente</th>
                         </tr>
@@ -183,9 +188,9 @@
                     </thead>
                     <tbody>
                         @foreach ($detalles as $det)
-                        <tr>
+                        <tr >
                             <td>{{$det->cantidad}}</td>
-                            <td>{{$det->articulo}}</td>
+                            <td>{{$det->medicamento}}</td>
                             <td>{{$det->precio}}</td>
                             <td>{{$det->descuento}}</td>
                             <td>{{$det->cantidad*$det->precio-$det->descuento}}</td>

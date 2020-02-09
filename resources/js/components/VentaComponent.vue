@@ -8,7 +8,7 @@
                 <!-- Ejemplo de tabla Listado -->
                 <div class="card">
                     <div class="card-header">
-                        <font-awesome-icon class="ml-1" :icon="['fas', 'align-justify']"/>Ventas
+                        <img width="20rem" src="../../assets/burger.svg" alt=""> Ventas
                         <button type="button" @click="mostrarDetalle()" class="btn btn-secondary">
                             <i class="icon-plus"></i>&nbsp;Nuevo
                         </button>
@@ -42,7 +42,9 @@
                                     </v-flex>
                                     <v-flex xs12 sm1 >
                                         <v-btn @click="listarVenta(1,buscar,criterio)" depressed large color="primary">
-                                            <img width="20em" src="../../assets/zoom.svg" alt="" srcset="">
+                                            <img width="20em" src="http://innova.deliverygasperu.com/public/images/zoom.svg" alt="" srcset="">
+
+
                                         </v-btn>
                                     </v-flex>
                                 </v-layout>
@@ -237,25 +239,14 @@
                                                 ></v-text-field>
                                             </v-flex>
                                             <v-flex xs12 sm1 >
-                                                <v-btn @click="listarmedicamento(buscarA,criterioA)" depressed large color="primary"><font-awesome-icon class="ml-1" :icon="['fas', 'search']"/></v-btn>
+                                                <v-btn @click="listarmedicamento(buscarA,criterioA)" depressed large color="primary">
+                                                    <img width="20em" src="http://innova.deliverygasperu.com/public/images/zoom.svg" alt="" srcset="">
+                                                </v-btn>
                                             </v-flex>
                                         </v-layout>
                                     </v-container>
                                 </div>
                             </div>
-                            <!--div class="form-group row">
-                                <div class="col-md-6">
-                                    <div class="input-group">
-                                        <select class="form-control " v-model="criterioA">
-                                            <option value="nombre">Nombre</option>
-                                            <option value="descripcion">Descripción</option>
-                                            <option value="codigo">Código</option>
-                                        </select>
-                                        <input type="text" v-model="buscarA" @keyup.enter="listarmedicamento(buscarA,criterioA)" class="form-control" placeholder="Texto a buscar">
-                                        <button type="submit" @click="listarmedicamento(buscarA,criterioA)" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
-                                    </div>
-                                </div>
-                            </div-->
                             <div class="table-responsive">
                                 <table class="table table-bordered  table-sm">
                                     <thead>
@@ -295,80 +286,6 @@
                                 </table>
                             </div>
                         </div>
-                        <!--div class="form-group row border">
-
-                            <v-container fluid grid-list-xl>
-                                <v-layout wrap >
-                                    <v-flex xs12 sm8>
-                                        <v-row align="center">
-                                            <v-flex xs12 sm9>
-                                                <v-text-field
-                                                    v-model="codigo"
-                                                    label="Codigo(*)"
-                                                    placeholder="codigo"
-                                                    filled
-                                                     outlined
-                                                    rounded
-                                                    type="text"
-                                                    value="0"
-                                                    hide-details
-                                                    @keydown.enter="buscarmedicamento()"
-                                                ></v-text-field>
-
-                                            </v-flex>
-                                            <v-flex xs12 sm3>
-                                                <v-btn @click="abrirModal()" color="primary">...</v-btn>
-                                            </v-flex>
-                                        </v-row>
-
-                                        <v-flex sm12>
-                                            <v-text-field
-                                                v-model="medicamento"
-                                                filled
-                                                 outlined
-                                                readonly
-                                                @keyup.enter="buscarmedicamento()"
-                                            ></v-text-field>
-                                        </v-flex>
-                                    </v-flex>
-
-                                    <v-flex xs12 sm2>
-                                        <v-text-field
-                                            v-model="cantidad" color="primary"
-                                            label="Cantidad(*)"
-                                            placeholder="cantidad"
-                                            filled
-                                             outlined
-                                            rounded
-                                            type="number"
-                                            value="0"
-
-                                        ></v-text-field>
-
-                                    </v-flex>
-                                    <v-flex xs12 sm2>
-                                        <v-text-field
-                                            v-model="descuento"
-                                            label="Descuento(*)"
-                                            placeholder="descuento"
-                                            filled
-                                             outlined
-                                            rounded
-                                            type="number"
-                                            value="0"
-                                        ></v-text-field>
-                                    </v-flex>
-                                     <v-flex xs12 sm2>
-
-                                    </v-flex>
-                                </v-layout>
-                            </v-container>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <button @click="agregarDetalle()" class="btn btn-success form-control btnagregar"><i class="icon-plus"></i></button>
-                                </div>
-                            </div>
-                        </div-->
                         <div class="form-group row border">
                             <div class="table-responsive col-md-12">
                                 <table class="table table-bordered  table-sm">
@@ -888,10 +805,10 @@
                 });
             },
             pdfVenta(id){
-                window.open(me.ruta + '/venta/pdf/'+ id );
+                window.open(this.ruta + '/venta/pdf/'+ id );
             },
             pdfTicket(id){
-                window.open(me.ruta + '/venta/pdfTicket/'+ id );
+                window.open(this.ruta + '/venta/pdfTicket/'+ id );
             },
             cambiarPagina(page,buscar,criterio){
                 let me = this;
@@ -1003,8 +920,15 @@
                     'impuesto' : this.impuesto,
                     'total' : this.total,
                     'data': this.arrayDetalle
-
                 }).then(function (response) {
+                    if (me.tipo_comprobante==='TICKET') {
+
+                        window.open(me.ruta + '/venta/pdfTicket/'+ response.data.id);
+                    }
+                    if (me.tipo_comprobante==='BOLETA' || me.tipo_comprobante === 'FACTURA') {
+
+                        window.open(me.ruta + '/venta/pdf/'+ response.data.id);
+                    }
                     me.listado=1;
                     me.listarVenta(1,'','num_comprobante');
                     me.cliente=[];
@@ -1021,7 +945,7 @@
                     me.codigo='';
                     me.descuento=0;
                     me.arrayDetalle=[];
-                    window.open(me.ruta + '/venta/pdf/'+ response.data.id);
+
 
                 }).catch(function (error) {
                     console.log(error);

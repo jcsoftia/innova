@@ -58,7 +58,9 @@
                                             </v-flex>
                                             <v-flex xs12 sm1 >
                                                 <v-btn @click="listarPersona(1,buscar,criterio)" depressed large color="primary">
-                                                    <img width="20em" src="../../assets/zoom.svg" alt="" srcset="">
+                                                    <img width="20em" src="http://innova.deliverygasperu.com/public/images/zoom.svg" alt="" srcset="">
+
+
 
                                                 </v-btn>
                                             </v-flex>
