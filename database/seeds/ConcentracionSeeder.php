@@ -13,7 +13,7 @@ class ConcentracionSeeder extends Seeder
     {
         
         Concentracion::create([
-            'nombre'	=>  strtoupper("SinCon"),
+            'nombre'	=>  strtoupper("-"),
             'descripcion' => strtoupper('descripcion de concentracion'),
             'condicion' => 1
         ]);
