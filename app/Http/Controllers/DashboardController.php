@@ -19,7 +19,7 @@ class DashboardController extends Controller
             DB::raw('SUM(i.total) as total'))
         ->whereYear('i.fecha_hora',$anio)
             ->orderBy(DB::raw("fecha_hora"))
-        ->groupBy(DB::raw("(DATE_FORMAT(fecha_hora, '%M'))"),
+        ->groupBy(DB::raw("fecha_hora"),DB::raw("(DATE_FORMAT(fecha_hora, '%M'))"),
             DB::raw("extract(year from  i.fecha_hora)"))
         ->get();
 
@@ -34,7 +34,7 @@ class DashboardController extends Controller
             DB::raw('SUM(v.total) as total'))
         ->whereYear('v.fecha_hora',$anio)
             ->orderBy(DB::raw("fecha_hora"))
-        ->groupBy( DB::raw("(DATE_FORMAT(fecha_hora, '%M'))"),
+        ->groupBy(DB::raw("fecha_hora"), DB::raw("(DATE_FORMAT(fecha_hora, '%M'))"),
             DB::raw("extract(year from  v.fecha_hora)"))
 
         ->get();
@@ -54,7 +54,7 @@ class DashboardController extends Controller
             DB::raw('SUM(i.total) as total'))
         ->whereMonth('i.fecha_hora',$mes)
             ->orderBy(DB::raw("fecha_hora"))
-        ->groupBy(DB::raw("extract(day from  i.fecha_hora)"),
+        ->groupBy(DB::raw("fecha_hora"),DB::raw("extract(day from  i.fecha_hora)"),
             DB::raw("extract(month from  i.fecha_hora)"))
         ->get();
 
@@ -67,7 +67,7 @@ class DashboardController extends Controller
             DB::raw('SUM(v.total) as total'))
         ->whereMonth('v.fecha_hora',$mes)
             ->orderBy(DB::raw("fecha_hora"))
-        ->groupBy( DB::raw("extract(day from  v.fecha_hora)"),
+        ->groupBy(DB::raw("fecha_hora"), DB::raw("extract(day from  v.fecha_hora)"),
             DB::raw("DATE_FORMAT(fecha_hora, '%M')"))
         ->get();
 

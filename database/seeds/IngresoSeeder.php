@@ -1879,7 +1879,7 @@ public function run(){
             [50,	"789"	,3.68,	"04/04/2023"],
 
 
-            
+
         ];
         Proveedor::create([
             'id'=>1,
@@ -1896,14 +1896,15 @@ public function run(){
             'estado' => 'Registrado',
 
         ]);
-        
-        for ($i=0; $i < count($datos); $i++) { 
+
+        for ($i=0; $i < count($datos); $i++) {
             if ($datos[$i][3] == "00/01/1900") {
                 DetalleIngreso::create([
                     'idingreso'=>1,
                     'idmedicamento'=>$i+1,
                     'cantidad'=>$datos[$i][0],
                     'lote'=>$datos[$i][1],
+                    'costo'=>0,
                     'precio'=>$datos[$i][2],
                 ]);
             }else {
@@ -1912,12 +1913,13 @@ public function run(){
                     'idmedicamento'=>$i+1,
                     'cantidad'=>$datos[$i][0],
                     'lote'=>$datos[$i][1],
+                    'costo' => 0,
                     'precio'=>$datos[$i][2],
                     'fecha_vencimiento'=>date('Y-m-d', strtotime($datos[$i][3])),
                 ]);
             }
-            
+
         }
-        
+
     }
 }
