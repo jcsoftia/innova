@@ -6,7 +6,7 @@
             </ol>
             <div class="container-fluid">
                 <!-- Ejemplo de tabla Listado -->
-                <div class="card">
+                <div class="c           ard">
                     <div class="card-header">
                         <img width="20rem" src="../../assets/burger.svg" alt=""> Ingresos
                         <button type="button" @click="mostrarDetalle()" class="btn btn-secondary">
@@ -283,7 +283,7 @@
                                                     </button>
                                                 </td>
                                                 <td v-text="med.codigo"></td>
-                                                <td v-text="med.nombre + ' '+ med.concentracion + ' '+med.presentacion"></td>
+                                                <td v-text="med.nombre + ' '+ med.marca + ' '+med.presentacion"></td>
                                                 <td v-text="med.precio_venta"></td>
                                                 <td v-text="med.stock"></td>
                                                 <td>
@@ -351,21 +351,21 @@
                                             </td>
                                         </tr>
                                         <tr style="background-color: #ddd;">
-                                            <td colspan="6" align="right"><strong>Total Parcial:</strong></td>
-                                            <td>$ {{totalParcial=(total-totalImpuesto).toFixed(2)}}</td>
+                                            <td colspan="9" align="right"><strong>Total Parcial:</strong></td>
+                                            <td>S/ {{totalParcial=(total-totalImpuesto).toFixed(2)}}</td>
                                         </tr>
                                         <tr style="background-color: #ddd;">
-                                            <td colspan="6" align="right"><strong>Total Impuesto:</strong></td>
-                                            <td>$ {{totalImpuesto=((total*impuesto)/(1+impuesto)).toFixed(2)}}</td>
+                                            <td colspan="9" align="right"><strong>Total Impuesto:</strong></td>
+                                            <td>S/ {{totalImpuesto=((total*impuesto)/(1+impuesto)).toFixed(2)}}</td>
                                         </tr>
                                         <tr style="background-color: #ddd;">
-                                            <td colspan="6" align="right"><strong>Total Neto:</strong></td>
-                                            <td>$ {{total=calcularTotal.toFixed(2)}}</td>
+                                            <td colspan="9" align="right"><strong>Total Neto:</strong></td>
+                                            <td>S/ {{total=calcularTotal.toFixed(2)}}</td>
                                         </tr>
                                     </tbody>
                                     <tbody v-else>
                                         <tr>
-                                            <td colspan="6">
+                                            <td colspan="9">
                                                 NO hay artículos agregados
                                             </td>
                                         </tr>
@@ -449,11 +449,11 @@
                                         </tr>
                                         <tr style="background-color: #CEECF5;">
                                             <td colspan="4" align="right"><strong>Total Parcial:</strong></td>
-                                            <td>$ {{totalParcial=(total-totalImpuesto).toFixed(2)}}</td>
+                                            <td>S/ {{totalParcial=(total-totalImpuesto).toFixed(2)}}</td>
                                         </tr>
                                         <tr style="background-color: #CEECF5;">
                                             <td colspan="4" align="right"><strong>Total Impuesto:</strong></td>
-                                            <td>$ {{totalImpuesto=((total*impuesto)).toFixed(2)}}</td>
+                                            <td>S/ {{totalImpuesto=((total*impuesto)).toFixed(2)}}</td>
                                         </tr>
                                         <tr style="background-color: #CEECF5;">
                                             <td colspan="4" align="right"><strong>Total Neto:</strong></td>
@@ -527,7 +527,7 @@
                                                 </button>
                                             </td>
                                             <td v-text="med.codigo"></td>
-                                            <td v-text="med.nombre + ' '+ med.concentracion + ' '+med.presentacion"></td>
+                                            <td v-text="med.nombre + ' '+ med.marca + ' '+med.presentacion"></td>
                                             <td v-text="med.nombre_categoria"></td>
                                             <td v-text="med.precio_ingreso"></td>
                                             <td v-text="med.stock"></td>
@@ -713,7 +713,7 @@
                     me.arraymedicamento = respuesta.medicamentos.data;
 
                     if (me.arraymedicamento.length>0){
-                        me.medicamento=me.arraymedicamento[0]['nombre']+me.arraymedicamento[0]['concentracion']+me.arraymedicamento[0]['presentacion'];
+                        me.medicamento=me.arraymedicamento[0]['nombre']+me.arraymedicamento[0]['marca']+me.arraymedicamento[0]['presentacion'];
                         me.idmedicamento=me.arraymedicamento[0]['id'];
                         me.costo=me.arraymedicamento[0]['precio_ingreso'];
                         me.precio=me.arraymedicamento[0]['precio'];
@@ -805,7 +805,7 @@
                     else{
                        me.arrayDetalle.push({
                             idmedicamento: data['id'],
-                            medicamento: data['nombre'] +' '+ data['concentracion'] +' '+ data['presentacion'],
+                            medicamento: data['nombre'] +' '+ data['marca'] +' '+ data['presentacion'],
                             cantidad: 1,
                             costo: data['precio_ingreso'],
                             precio: data['precio'],

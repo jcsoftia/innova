@@ -74,7 +74,7 @@
                                                     <tr>
                                                         <th>Codigo</th>
                                                         <th>Nombre</th>
-                                                        <th>Concentracion</th>
+                                                        <th>marca</th>
                                                         <th>Presentacion</th>
                                                         <th>Laboratorio</th>
                                                         <th>Stock</th>
@@ -90,7 +90,7 @@
                                                     <tr class="table-dar" v-for="medicamento in arrayMedicamento" :key="medicamento.id">
                                                         <td v-text="medicamento.codigo"></td>
                                                         <td v-text="medicamento.nombre"></td>
-                                                        <td v-text="medicamento.concentracion"></td>
+                                                        <td v-text="medicamento.marca"></td>
                                                         <td v-text="medicamento.presentacion"></td>
                                                         <td v-text="medicamento.laboratorio"></td>
                                                         <td class="f-high font-weight-bold blue--text" v-text="medicamento.stock"></td>
@@ -302,10 +302,10 @@
                                                 </v-flex>
                                                 <v-flex xs12 sm6>
                                                     <v-autocomplete
-                                                        label='Seleccione Concentracion'
-                                                        v-model='concentracion'
+                                                        label='Seleccione marca'
+                                                        v-model='marca'
                                                         :filter="activeFilter"
-                                                        :items='arrayConcentracion'
+                                                        :items='arrayMarca'
                                                         item-value='id'
                                                         item-text='nombre'
                                                         filled
@@ -366,14 +366,14 @@
                 busqueda: ['codigo','nombre','descripcion'],
                 precio_venta: 0.0,
                 producto: {},
-                concentracion: {},
+                marca: {},
                 presentacion: {},
                 laboratorio: {},
                 descripcion: {},
                 arrayMedicamento:[],
                 arrayMedicamentoStock:[],
                 arrayPresentacion:[],
-                arrayConcentracion:[],
+                arrayMarca:[],
                 arrayLaboratorio:[],
                 arrayProducto:[],
                 modal:0,
@@ -495,7 +495,7 @@
                     let url = me.ruta + '/medicamento/registrar';
                     console.log(me.producto.id,
                         me.presentacion.id,
-                        me.concentracion.id,
+                        me.marca.id,
                         me.laboratorio.id,);
                     axios.post(url, {
                         codigo: me.codigo,
@@ -503,7 +503,7 @@
                         descripcion: me.descripcion,
                         producto_id: me.producto.id,
                         presentacion_id: me.presentacion.id,
-                        concentracion_id: me.concentracion.id,
+                        concentracion_id: me.marca.id,
                         laboratorio_id: me.laboratorio.id,
                     })
                     .then(function (response) {
@@ -534,7 +534,7 @@
                         descripcion: me.descripcion,
                         producto_id: me.producto.id,
                         presentacion_id: me.presentacion.id,
-                        concentracion_id: me.concentracion.id,
+                        concentracion_id: me.marca.id,
                         laboratorio_id: me.laboratorio.id,
                     })
                     .then(function (response) {
@@ -556,7 +556,7 @@
                 me.selectMedic();
                 me.selectProducto();
                 me.selectPresentacion();
-                me.selectConcentracion();
+                me.selectMarca();
                 me.selectLaboratorio();
                 for (let i = 0; i < me.arrayMedicamento.length; i++) {
                     // const element = array[i];
@@ -578,7 +578,7 @@
                                     me.descripcion = '';
                                     me.producto = {};
                                     me.presentacion = {};
-                                    me.concentracion = {};
+                                    me.marca = {};
                                     me.laboratorio = {};
                                     break
                                 }
@@ -594,7 +594,7 @@
                                     me.precio_venta = data.precio_venta;
                                     me.producto = {'id':data.producto_id, 'nombre':data.producto};
                                     me.presentacion = {'id':data.presentacion_id, 'nombre':data.presentacion};
-                                    me.concentracion = {'id':data.concentracion_id, 'nombre':data.concentracion};
+                                    me.marca = {'id':data.concentracion_id, 'nombre':data.marca};
                                     me.laboratorio = {'id':data.laboratorio_id, 'nombre':data.laboratorio};
                                     break
                                 }
@@ -684,7 +684,7 @@
                 if(!this.precio_venta) this.errorMostrarMsjMedicamento.push("El precio del Medicamento debe ser mayor a cero");
                 if(!this.presentacion.id) this.errorMostrarMsjMedicamento.push("La presentacion del Medicamento no puede estar vacio");
                 if(!this.laboratorio.id) this.errorMostrarMsjMedicamento.push("El laboratorio del Medicamento no puede estar vacio");
-                if(!this.concentracion.id) this.errorMostrarMsjMedicamento.push("La concentracion del Medicamento no puede estar vacio");
+                if(!this.marca.id) this.errorMostrarMsjMedicamento.push("La marca del Medicamento no puede estar vacio");
                 if(this.errorMostrarMsjMedicamento.length) this.errorMedicamento = 1;
                 return this.errorMedicamento;
             },
@@ -720,15 +720,15 @@
                     console.log(error);
                 });
             },
-            selectConcentracion(){
+            selectMarca(){
                 let me=this;
-                me.arrayConcentracion=[];
-                let url = me.ruta + '/concentracion/getAll';
+                me.arrayMarca=[];
+                let url = me.ruta + '/marca/getAll';
                 axios.get(url).then(function (response) {
                     var respuesta= response.data;
                     for (let i = 0; i < respuesta.length; i++) {
 
-                        me.arrayConcentracion.push({'id':respuesta[i].id, 'nombre':respuesta[i].nombre});
+                        me.arrayMarca.push({'id':respuesta[i].id, 'nombre':respuesta[i].nombre});
                     }
                 })
                 .catch(function (error) {
@@ -754,8 +754,10 @@
                 me.arrayMedic = [];
                 let url = me.ruta + '/producto/getAll';
                 axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayMedic=respuesta.medicamentos.data;
+                    console.log(response.data);
+                    let respuesta = response.data;
+                    // me.arrayMedic=respuesta.medicamentos.data;
+                    console.log(me.arrayMedic);
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -802,7 +804,7 @@ overflow: hidden;
         justify-content: center;
         width:100%;
     }
-    .text-error{
+    .text-error, .text-error *{
         color:red !important;
         font-weight:bold;
 

@@ -48,12 +48,12 @@ Route::group(['middleware'=>['auth']],function(){
         Route::put('/presentacion/desactivar',  'PresentacionController@desactivar');
         Route::get('/presentacion/getAll',      'PresentacionController@getAll');
         // Parte de PRESENTACIONES
-        Route::get('/concentracion',            'ConcentracionController@index');
-        Route::post('/concentracion/registrar', 'ConcentracionController@store');
-        Route::put('/concentracion/actualizar', 'ConcentracionController@update');
-        Route::put('/concentracion/activar',    'ConcentracionController@activar');
-        Route::put('/concentracion/desactivar', 'ConcentracionController@desactivar');
-        Route::get('/concentracion/getAll',     'ConcentracionController@getAll');
+        Route::get('/marca',            'ConcentracionController@index');
+        Route::post('/marca/registrar', 'ConcentracionController@store');
+        Route::put('/marca/actualizar', 'ConcentracionController@update');
+        Route::put('/marca/activar',    'ConcentracionController@activar');
+        Route::put('/marca/desactivar', 'ConcentracionController@desactivar');
+        Route::get('/marca/getAll',     'ConcentracionController@getAll');
         // Parte de LABORATORIO
         Route::get('/laboratorio',              'LaboratorioController@index');
         Route::post('/laboratorio/registrar',   'LaboratorioController@store');
@@ -201,12 +201,12 @@ Route::group(['middleware'=>['auth']],function(){
         Route::put('/presentacion/desactivar',  'PresentacionController@desactivar');
         Route::get('/presentacion/getAll',      'PresentacionController@getAll');
         // Parte de PRESENTACIONES
-        Route::get('/concentracion',            'ConcentracionController@index');
-        Route::post('/concentracion/registrar', 'ConcentracionController@store');
-        Route::put('/concentracion/actualizar', 'ConcentracionController@update');
-        Route::put('/concentracion/activar',    'ConcentracionController@activar');
-        Route::put('/concentracion/desactivar', 'ConcentracionController@desactivar');
-        Route::get('/concentracion/getAll',     'ConcentracionController@getAll');
+        Route::get('/marca',            'ConcentracionController@index');
+        Route::post('/marca/registrar', 'ConcentracionController@store');
+        Route::put('/marca/actualizar', 'ConcentracionController@update');
+        Route::put('/marca/activar',    'ConcentracionController@activar');
+        Route::put('/marca/desactivar', 'ConcentracionController@desactivar');
+        Route::get('/marca/getAll',     'ConcentracionController@getAll');
         // Parte de LABORATORIO
         Route::get('/laboratorio',              'LaboratorioController@index');
         Route::post('/laboratorio/registrar',   'LaboratorioController@store');

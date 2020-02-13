@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Concentracion;
+use App\Models\marca;
 class ConcentracionSeeder extends Seeder
 {
     /**
@@ -11,30 +11,30 @@ class ConcentracionSeeder extends Seeder
      */
     public function run()
     {
-        
-        Concentracion::create([
+
+        marca::create([
             'nombre'	=>  strtoupper("-"),
-            'descripcion' => strtoupper('descripcion de concentracion'),
+            'descripcion' => strtoupper('descripcion de marca'),
             'condicion' => 1
         ]);
-        //Concentracion::create([
+        //marca::create([
         //    'nombre'	=>  strtoupper("600 mg"),
-        //    'descripcion' => strtoupper('descripcion de concentracion '),
+        //    'descripcion' => strtoupper('descripcion de marca '),
         //    'condicion' => 1
         //]);
-        //Concentracion::create([
+        //marca::create([
         //    'nombre'  =>  strtoupper("1200 mg"),
-        //    'descripcion' => strtoupper('descripcion de concentracion '),
+        //    'descripcion' => strtoupper('descripcion de marca '),
         //    'condicion' => 1
         //]);
-        //Concentracion::create([
+        //marca::create([
         //    'nombre'	=>  strtoupper("1.5 mg"),
-        //    'descripcion' => strtoupper('descripcion de concentracion '),
+        //    'descripcion' => strtoupper('descripcion de marca '),
         //    'condicion' => 1
         //]);
-        //Concentracion::create([
+        //marca::create([
         //    'nombre'	=>  strtoupper("10 mg"),
-        //    'descripcion' => strtoupper('descripcion de concentracion '),
+        //    'descripcion' => strtoupper('descripcion de marca '),
         //    'condicion' => 1
         //]);
     }

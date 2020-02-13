@@ -8,16 +8,11 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-import VueSweetalert2 from 'vue-sweetalert2';
 import Datepicker from "vuejs-datepicker";
+import VueSweetalert2 from "vue-sweetalert2";
+
+// If you don't need the styles, do not connect
+import "sweetalert2/dist/sweetalert2.min.css";
 
 Vue.use(VueSweetalert2);
 window.Vuetify = require('vuetify');
@@ -27,7 +22,7 @@ import 'vuetify/dist/vuetify.min.css';
 
 Vue.component("datepicker", Datepicker);
 Vue.component('producto-component', require('./components/ProductoComponent.vue').default);
-Vue.component('concentracion-component', require('./components/ConcentracionComponent.vue').default);
+Vue.component('marca-component', require('./components/ConcentracionComponent.vue').default);
 Vue.component('medicamento-component', require('./components/MedicamentosComponent.vue').default);
 Vue.component('presentacion-component', require('./components/PresentacionComponent.vue').default);
 Vue.component('laboratorio-component', require('./components/LaboratorioComponent.vue').default);
@@ -54,9 +49,10 @@ const app = new Vue({
     el: "#app",
     data: {
         menu: 0,
-        // ruta: "http://innova.deliverygasperu.com/public/"
+        ruta: "http://innova.deliverygasperu.com/public/"
         // ruta: '/innova_dent/public'
-        ruta: "http://127.0.0.1:8000"
+        // ruta: "http://127.0.0.1:8000"
+
     }
 });
 // export default new Vuetify({

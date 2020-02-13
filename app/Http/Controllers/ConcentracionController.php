@@ -18,13 +18,13 @@ class ConcentracionController extends Controller
         }
         $buscar = strtoupper($request->buscar);
         $criterio = $request->criterio;
-        
+
         if ($buscar == '') {
-             
+
             $concentraciones = Concentracion::orderBy('id','desc')->paginate(10);
         }else {
             $concentraciones = Concentracion::where($criterio, 'like', '%'.$buscar.'%')->orderBy('id','desc')->paginate(10);
-            
+
         }
 
         return [
@@ -41,40 +41,40 @@ class ConcentracionController extends Controller
         // return $concentraciones;
     }
 
-    
+
 
     public function store(Request $request)
     {
-        $concentracion = new Concentracion();
-        $concentracion->nombre = strtoupper($request->nombre);
-        $concentracion->descripcion = strtoupper($request->descripcion);
-        $concentracion->condicion = 1;
-        $concentracion->save();
+        $Concentracion = new Concentracion();
+        $Concentracion->nombre = strtoupper($request->nombre);
+        $Concentracion->descripcion = strtoupper($request->descripcion);
+        $Concentracion->condicion = 1;
+        $Concentracion->save();
     }
 
     public function update(Request $request)
     {
-        $concentracion = Concentracion::findOrFail($request->id);
-        $concentracion->nombre = strtoupper($request->nombre);
-        $concentracion->descripcion = strtoupper($request->descripcion);
-        $concentracion->save();
+        $Concentracion = Concentracion::findOrFail($request->id);
+        $Concentracion->nombre = strtoupper($request->nombre);
+        $Concentracion->descripcion = strtoupper($request->descripcion);
+        $Concentracion->save();
     }
 
     public function desactivar(Request $request)
     {
-        $concentracion = Concentracion::findOrFail($request->id);
-        $concentracion->condicion = 0;
-        $concentracion->save();
+        $Concentracion = Concentracion::findOrFail($request->id);
+        $Concentracion->condicion = 0;
+        $Concentracion->save();
     }
     public function activar(Request $request)
     {
-        $concentracion = Concentracion::findOrFail($request->id);
-        $concentracion->condicion = 1;
-        $concentracion->save();
+        $Concentracion = Concentracion::findOrFail($request->id);
+        $Concentracion->condicion = 1;
+        $Concentracion->save();
     }
     public function getAll()
     {
         return Concentracion::all();
     }
-    
+
 }

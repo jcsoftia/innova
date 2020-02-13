@@ -13,15 +13,15 @@
                                 text-color="white"
                                 >
                                 <v-icon left >mdi-arrow-right-thick</v-icon>
-                                Concentraciones
+                                Marca
                             </v-chip>
-                            <button type="button" class="btn btn-danger waves-effect waves-light" @click="abrirModal('concentracion','registrar')"><i class="icon-plus mr-2"></i>Nuevo</button>
+                            <button type="button" class="btn btn-danger waves-effect waves-light" @click="abrirModal('marca','registrar')"><i class="icon-plus mr-2"></i>Nuevo</button>
 
                         </div>
                         <div class="col-6">
                             <ol class="breadcrumb float-right">
                                 <li class="breadcrumb-item"><a href="javascript:void(0);">Gestion</a></li>
-                                <li class="breadcrumb-item active">Concentraciones</li>
+                                <li class="breadcrumb-item active">Marca</li>
                             </ol>
                         </div>
                     </div>
@@ -42,19 +42,19 @@
                                                 v-model="criterio"
                                                 :items="busqueda"
                                                 label="Criterio"
-                                                @keyup="listarConcentracion(1,buscar,criterio)"
+                                                @keyup="listarMarca(1,buscar,criterio)"
                                                 ></v-select>
                                             </v-flex>
                                             <v-flex xs12 sm8>
                                                 <v-text-field
-                                                    @keyup="listarConcentracion(1,buscar,criterio)"
+                                                    @keyup="listarMarca(1,buscar,criterio)"
                                                     v-model="buscar"
                                                     label="Buscar"
                                                     clearable
                                                 ></v-text-field>
                                             </v-flex>
                                             <v-flex xs12 sm1 >
-                                                <v-btn @click="listarConcentracion(1,buscar,criterio)" depressed large color="primary">
+                                                <v-btn @click="listarMarca(1,buscar,criterio)" depressed large color="primary">
                                                     <img width="20em" src="http://innova.deliverygasperu.com/public/images/zoom.svg" alt="" srcset="">
 
 
@@ -80,11 +80,11 @@
 
                                         <tbody>
 
-                                            <tr class="table-dar" v-for="concentracion in arrayConcentracion" :key="concentracion.id">
-                                                <td v-text="concentracion.nombre"></td>
-                                                <td v-text="concentracion.descripcion"></td>
+                                            <tr class="table-dar" v-for="marca in arrayMarca" :key="marca.id">
+                                                <td v-text="marca.nombre"></td>
+                                                <td v-text="marca.descripcion"></td>
                                                 <td class="text-center">
-                                                    <div v-if="concentracion.condicion == 1">
+                                                    <div v-if="marca.condicion == 1">
                                                         <span class="badge badge-success">Activo</span>
                                                     </div>
                                                     <div v-else>
@@ -94,14 +94,14 @@
                                                 </td>
                                                 <td class="btn-block">
 
-                                                    <button @click="abrirModal('concentracion','actualizar',concentracion)" type="button" class="btn btn-warning waves-effect waves-light"><i class="icon-pencil "></i></button>
-                                                    <template v-if="concentracion.condicion">
-                                                        <button type="button" class="btn btn-danger waves-effect waves-light" @click="alertaConfirm('Desactivar','¿Seguro que desea Desactivar?','Desactivado', 'desactivar',concentracion.id)">
+                                                    <button @click="abrirModal('marca','actualizar',marca)" type="button" class="btn btn-warning waves-effect waves-light"><i class="icon-pencil "></i></button>
+                                                    <template v-if="marca.condicion">
+                                                        <button type="button" class="btn btn-danger waves-effect waves-light" @click="alertaConfirm('Desactivar','¿Seguro que desea Desactivar?','Desactivado', 'desactivar',marca.id)">
                                                             <i class="icon-trash-bin"></i>
                                                         </button>
                                                     </template>
                                                     <template v-else>
-                                                        <button type="button" class="btn btn-primary waves-effect waves-light" @click="alertaConfirm('Activar','¿Seguro que desea Activar?','Activado', 'activar',concentracion.id)">
+                                                        <button type="button" class="btn btn-primary waves-effect waves-light" @click="alertaConfirm('Activar','¿Seguro que desea Activar?','Activado', 'activar',marca.id)">
                                                             <i class="icon-check"></i>
                                                         </button>
                                                     </template>
@@ -164,7 +164,7 @@
                                                 <v-flex xs12 sm6>
                                                     <v-text-field
                                                         v-model="nombre"
-                                                        label="Concentracion"
+                                                        label="marca"
                                                         filled
                                                         rounded
                                                     ></v-text-field>
@@ -180,15 +180,15 @@
                                                 <v-flex xs12 md-6>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn red accent-3 text-white" @click="cerrarModal()">Cerrar</button>
-                                                        <button  type="button" v-if="tipoAccion==1" class="btn green accent-4 waves-effect waves-light" @click="registrarConcentracion(); ">Guardar</button>
-                                                        <button type="button" v-if="tipoAccion==2" class="btn green accent-4 waves-effect waves-light" @click="actualizarConcentracion()">Actualizar</button>
+                                                        <button  type="button" v-if="tipoAccion==1" class="btn green accent-4 waves-effect waves-light" @click="registrarMarca(); ">Guardar</button>
+                                                        <button type="button" v-if="tipoAccion==2" class="btn green accent-4 waves-effect waves-light" @click="actualizarMarca()">Actualizar</button>
                                                     </div>
                                                 </v-flex>
                                                 <v-flex xs12 >
-                                                    <div v-if="errorConcentracion">
+                                                    <div v-if="errorMarca">
                                                         <v-alert type="error">
 
-                                                                <div class="text-center py-2" v-for="error in errorMostrarMsjConcentracion" :key="error" v-text="error">
+                                                                <div class="text-center py-2" v-for="error in errorMostrarMsjMarca" :key="error" v-text="error">
 
                                                                 </div>
 
@@ -200,7 +200,7 @@
                                     </v-container>
                                     <!-- <form action="#">
                                         <div class="form-group">
-                                            <label>Concentracion</label>
+                                            <label>marca</label>
                                             <div>
                                                 <input v-model="nombre" class="form-control"
                                                     required placeholder="Nombre de propducto"/>
@@ -211,20 +211,20 @@
                                             <div>
                                                 <input v-model="descripcion"
                                                     class="form-control" required
-                                                    placeholder="Descripcion del concentracion"/>
+                                                    placeholder="Descripcion del marca"/>
                                             </div>
                                         </div>
-                                        <div v-show="errorConcentracion" class="form-group row div-error">
+                                        <div v-show="errorMarca" class="form-group row div-error">
                                             <div class="text-center text-error">
-                                                <div class="text-center pt-3" v-for="error in errorMostrarMsjConcentracion" :key="error" v-text="error">
+                                                <div class="text-center pt-3" v-for="error in errorMostrarMsjMarca" :key="error" v-text="error">
 
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn red accent-3 text-white" @click="cerrarModal()">Cerrar</button>
-                                            <button  type="button" v-if="tipoAccion==1" class="btn btn-primary" @click="registrarConcentracion(); ">Guardar</button>
-                                            <button type="button" v-if="tipoAccion==2" class="btn btn-primary" @click="actualizarConcentracion()">Actualizar</button>
+                                            <button  type="button" v-if="tipoAccion==1" class="btn btn-primary" @click="registrarMarca(); ">Guardar</button>
+                                            <button type="button" v-if="tipoAccion==2" class="btn btn-primary" @click="actualizarMarca()">Actualizar</button>
                                         </div>
                                     </form> -->
                                 </div>
@@ -248,12 +248,12 @@
                 nombre: '',
                 descripcion:'',
                 busqueda: ['nombre','descripcion'],
-                arrayConcentracion:[],
+                arrayMarca:[],
                 modal:0,
                 tituloModal:0,
                 tipoAccion: 1,
-                errorConcentracion : 0,
-                errorMostrarMsjConcentracion : [],
+                errorMarca : 0,
+                errorMostrarMsjMarca : [],
                 pagination: {
                     'total':0,
                     'current_page':0,
@@ -293,16 +293,16 @@
             }
         },
         methods : {
-            listarConcentracion(page, buscar, criterio){
+            listarMarca(page, buscar, criterio){
 
                 let me = this;
-                let url = me.ruta + '/concentracion?page='+page+'&buscar='+buscar+'&criterio='+criterio;
+                let url = me.ruta + '/marca?page='+page+'&buscar='+buscar+'&criterio='+criterio;
                 axios.get(url)
                 .then(function (response) {
                     var respuesta = response.data;
-                    me.arrayConcentracion=respuesta.concentraciones.data;
+                    me.arrayMarca=respuesta.concentraciones.data;
                     me.pagination=respuesta.pagination
-                    console.log(me.arrayConcentracion);
+                    console.log(me.arrayMarca);
                 })
                 .catch(function (error) {
                     // handle error
@@ -316,12 +316,12 @@
             cambiarPagina(page, buscar , criterio){
                 let me = this;
                 me.pagination.current_page = page;
-                me.listarConcentracion(page, buscar , criterio);
+                me.listarMarca(page, buscar , criterio);
             },
-            registrarConcentracion(){
+            registrarMarca(){
                 let me = this;
-                let url = me.ruta + '/concentracion/registrar';
-                if (me.validarConcentracion()) {
+                let url = me.ruta + '/marca/registrar';
+                if (me.validarMarca()) {
                     return
                 }else{
                     axios.post(url, {
@@ -333,7 +333,7 @@
                         me.descripcion='';
                         console.log(response);
                         me.modal = 0;
-                        me.listarConcentracion(1,'','nombre');
+                        me.listarMarca(1,'','nombre');
                         me.alerta('success','Registrado con exito');
                     })
                     .catch(function (error) {
@@ -342,11 +342,11 @@
                     });
                 }
             },
-            actualizarConcentracion(){
+            actualizarMarca(){
 
                 let me = this;
-                let url = me.ruta + '/concentracion/actualizar'
-                if (me.validarConcentracion()) {
+                let url = me.ruta + '/marca/actualizar'
+                if (me.validarMarca()) {
                     return
                 }else{
                     axios.put(url, {
@@ -359,7 +359,7 @@
                         me.descripcion='';
                         console.log(response);
                         me.modal=0;
-                        me.listarConcentracion(me.pagination.current_page,me.buscar,'nombre');
+                        me.listarMarca(me.pagination.current_page,me.buscar,'nombre');
                         me.alerta('info','Actualizado con exito');
                     })
                     .catch(function (error) {
@@ -370,12 +370,12 @@
             },
             abrirModal(modelo, accion, data=[]){
                 switch(modelo){
-                    case "concentracion":{
+                    case "marca":{
                         switch (accion) {
                             case "registrar":
                                 {
                                     this.modal = 1;
-                                    this.tituloModal =  'Registrar Concentracion'
+                                    this.tituloModal =  'Registrar marca'
                                     this.nombre = '';
                                     this.descripcion = '';
                                     this.tipoAccion = 1;
@@ -384,7 +384,7 @@
                             case "actualizar":
                                 {
                                     this.modal = 1;
-                                    this.tituloModal =  'Actualziar Concentracion';
+                                    this.tituloModal =  'Actualziar marca';
                                     this.concentracion_id = data.id;
                                     this.nombre = data.nombre;
                                     this.tipoAccion = 2;
@@ -431,7 +431,7 @@
                     confirmButtonText: 'Si, '+titulo
                     }).then((result) => {
                         if (result.value) {
-                            let url = me.ruta + '/concentracion/activar';
+                            let url = me.ruta + '/marca/activar';
                             switch (accion) {
                                 case 'activar':
                                     axios.put(url, {
@@ -439,25 +439,25 @@
                                     })
                                     .then(function (response) {
                                         me.alerta('success',outText);
-                                        me.listarConcentracion(me.pagination.current_page,me.buscar,'nombre');
+                                        me.listarMarca(me.pagination.current_page,me.buscar,'nombre');
                                     })
                                     .catch(function (error) {
                                         console.log(error);
-                                        me.alerta('error','Falla al activar el concentracion');
+                                        me.alerta('error','Falla al activar el marca');
                                     });
                                     break;
 
                                 case 'desactivar':
-                                    axios.put(me.ruta + '/concentracion/desactivar', {
+                                    axios.put(me.ruta + '/marca/desactivar', {
                                         'id' : id
                                     })
                                     .then(function (response) {
                                         me.alerta('success',outText);
-                                        me.listarConcentracion(me.pagination.current_page,me.buscar,'nombre');
+                                        me.listarMarca(me.pagination.current_page,me.buscar,'nombre');
                                     })
                                     .catch(function (error) {
                                         console.log(error);
-                                        me.alerta('error','Falla al desactivar el concentracion');
+                                        me.alerta('error','Falla al desactivar el marca');
                                     });
                                     break;
 
@@ -469,16 +469,16 @@
 
                     })
             },
-            validarConcentracion(){
-                this.errorConcentracion = 0;
-                this.errorMostrarMsjConcentracion = [];
-                if(!this.nombre) this.errorMostrarMsjConcentracion.push("El nombre del Concentracion no puede estar vacio");
-                if(this.errorMostrarMsjConcentracion.length) this.errorConcentracion = 1;
-                return this.errorConcentracion;
+            validarMarca(){
+                this.errorMarca = 0;
+                this.errorMostrarMsjMarca = [];
+                if(!this.nombre) this.errorMostrarMsjMarca.push("El nombre del marca no puede estar vacio");
+                if(this.errorMostrarMsjMarca.length) this.errorMarca = 1;
+                return this.errorMarca;
             }
         },
         mounted() {
-            this.listarConcentracion(1,this.buscar,this.criterio);
+            this.listarMarca(1,this.buscar,this.criterio);
             // $().DataTable();
         }
     }
@@ -516,7 +516,7 @@ overflow: hidden;
         justify-content: center;
         width:100%;
     }
-    .text-error{
+    .text-error, .text-error *{
         color:red !important;
         font-weight:bold;
 

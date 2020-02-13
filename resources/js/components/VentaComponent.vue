@@ -254,7 +254,6 @@
                                             <th>Opciones</th>
                                             <th>Código</th>
                                             <th>Nombre</th>
-                                            <th>Categoría</th>
                                             <th>Precio Venta</th>
                                             <th>Stock</th>
                                             <th>Estado</th>
@@ -268,7 +267,7 @@
                                                 </button>
                                             </td>
                                             <td v-text="medicamento.codigo"></td>
-                                            <td v-text="medicamento.nombre + ' '+ medicamento.concentracion + ' '+medicamento.presentacion"></td>
+                                            <td v-text="medicamento.nombre + ' '+ medicamento.marca + ' ' + medicamento.laboratorio + ' - '+medicamento.presentacion "></td>
                                             <td v-text="medicamento.nombre_categoria"></td>
                                             <td v-text="medicamento.precio_venta"></td>
                                             <td v-text="medicamento.stock"></td>
@@ -312,7 +311,7 @@
                                                 <input v-model="detalle.precio" type="number" class="form-control">
                                             </td>
                                             <td>
-                                                <span style="color:red;" v-show="detalle.cantidad>detalle.stock">Stock: {{detalle.stock}}</span>
+                                                <span style="color:red !important" v-show="(warnStock(detalle.cantidad,detalle.stock))">Stock: {{detalle.stock}}</span>
                                                 <input v-model="detalle.cantidad" type="number" class="form-control">
                                             </td>
                                             <td>
@@ -325,15 +324,15 @@
                                         </tr>
                                         <tr style="background-color: #ddd">
                                             <td colspan="5" align="right"><strong>Total Parcial:</strong></td>
-                                            <td>$ {{totalParcial=(total-totalImpuesto).toFixed(2)}}</td>
+                                            <td>S/ {{totalParcial=(total-totalImpuesto).toFixed(2)}}</td>
                                         </tr>
                                         <tr style="background-color: #ddd">
                                             <td colspan="5" align="right"><strong>Total Impuesto:</strong></td>
-                                            <td>$ {{totalImpuesto=((total*impuesto)/(1+impuesto)).toFixed(2)}}</td>
+                                            <td>S/ {{totalImpuesto=((total*impuesto)/(1+impuesto)).toFixed(2)}}</td>
                                         </tr>
                                         <tr style="background-color: #ddd">
                                             <td colspan="5" align="right"><strong>Total Neto:</strong></td>
-                                            <td>$ {{total=calcularTotal}}</td>
+                                            <td>S/ {{total=calcularTotal}}</td>
                                         </tr>
                                     </tbody>
                                     <tbody v-else>
@@ -422,15 +421,15 @@
                                         </tr>
                                         <tr style="background-color: #ddd">
                                             <td colspan="4" align="right"><strong>Total Parcial:</strong></td>
-                                            <td>$ {{totalParcial=(total-totalImpuesto).toFixed(2)}}</td>
+                                            <td>S/ {{totalParcial=(total-totalImpuesto).toFixed(2)}}</td>
                                         </tr>
                                         <tr style="background-color: #ddd">
                                             <td colspan="4" align="right"><strong>Total Impuesto:</strong></td>
-                                            <td>$ {{totalImpuesto=((total*impuesto)).toFixed(2)}}</td>
+                                            <td>S/ {{totalImpuesto=((total*impuesto)).toFixed(2)}}</td>
                                         </tr>
                                         <tr style="background-color: #ddd">
                                             <td colspan="4" align="right"><strong>Total Neto:</strong></td>
-                                            <td>$ {{total}}</td>
+                                            <td>S/ {{total}}</td>
                                         </tr>
                                     </tbody>
                                     <tbody v-else>
@@ -455,80 +454,6 @@
                 </div>
                 <!-- Fin ejemplo de tabla Listado -->
             </div>
-            <!--Inicio del modal agregar/actualizar-->
-            <!--div class="modal fade" tabindex="-1" :class="{'mostrar' : modal}" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
-                <div class="modal-dialog modal-primary modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" v-text="tituloModal"></h4>
-                            <button type="button" class="close" @click="cerrarModal()" aria-label="Close">
-                              <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body purple lighten-5">
-                            <div class="form-group row">
-                                <div class="col-md-6">
-                                    <div class="input-group">
-                                        <select class="form-control " v-model="criterioA">
-                                            <option value="nombre">Nombre</option>
-                                            <option value="descripcion">Descripción</option>
-                                            <option value="codigo">Código</option>
-                                        </select>
-                                        <input type="text" v-model="buscarA" @keyup.enter="listarmedicamento(buscarA,criterioA)" class="form-control" placeholder="Texto a buscar">
-                                        <button type="submit" @click="listarmedicamento(buscarA,criterioA)" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table table-bordered  table-sm">
-                                    <thead>
-                                        <tr>
-                                            <th>Opciones</th>
-                                            <th>Código</th>
-                                            <th>Nombre</th>
-                                            <th>Categoría</th>
-                                            <th>Precio Venta</th>
-                                            <th>Stock</th>
-                                            <th>Estado</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="medicamento in arraymedicamento" :key="medicamento.id">
-                                            <td>
-                                                <button type="button" @click="agregarDetalleModal(medicamento)" class="btn btn-success btn-sm">
-                                                <i class="icon-check"></i>
-                                                </button>
-                                            </td>
-                                            <td v-text="medicamento.codigo"></td>
-                                            <td v-text="medicamento.nombre + ' '+ medicamento.concentracion + ' '+medicamento.presentacion"></td>
-                                            <td v-text="medicamento.nombre_categoria"></td>
-                                            <td v-text="medicamento.precio_venta"></td>
-                                            <td v-text="medicamento.stock"></td>
-                                            <td>
-                                                <div v-if="medicamento.condicion">
-                                                    <span class="badge badge-success">Activo</span>
-                                                </div>
-                                                <div v-else>
-                                                    <span class="badge badge-danger">Desactivado</span>
-                                                </div>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" @click="cerrarModal()">Cerrar</button>
-                            <button type="button" v-if="tipoAccion==1" class="btn btn-primary" @click="registrarPersona()">Guardar</button>
-                            <button type="button" v-if="tipoAccion==2" class="btn btn-primary" @click="actualizarPersona()">Actualizar</button>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div-->
-            <!--Fin del modal-->
             <!-- El modal cLIENTE -->
             <div class="modal fade" :class="{'mostrar':modalCliente}" tabindex="-1"  role="dialog" >
                 <div class="modal-dialog modal-lg">
@@ -790,7 +715,7 @@
                     me.arraymedicamento = respuesta.medicamentos.data;
 
                     if (me.arraymedicamento.length>0){
-                        me.medicamento=me.arraymedicamento[0]['nombre']+me.arraymedicamento[0]['concentracion']+me.arraymedicamento[0]['presentacion'];
+                        me.medicamento=me.arraymedicamento[0]['nombre']+me.arraymedicamento[0]['marca']+me.arraymedicamento[0]['presentacion'];
                         me.idmedicamento=me.arraymedicamento[0]['id'];
                         me.precio=me.arraymedicamento[0]['precio_venta'];
                         me.stock=me.arraymedicamento[0]['stock'];
@@ -886,7 +811,7 @@
                     else{
                        me.arrayDetalle.push({
                             idmedicamento: data['id'],
-                            medicamento: data['nombre'] +' '+ data['concentracion'] +' '+ data['presentacion'],
+                            medicamento: data['nombre'] +' '+ data['marca'] +' '+ data['presentacion'],
                             cantidad: 1,
                             precio: data['precio_venta'],
                             descuento:0,
@@ -958,7 +883,7 @@
                 var art;
 
                 me.arrayDetalle.map(function(x){
-                    if (x.cantidad>x.stock){
+                    if (me.warnStock(x.cantidad, x.stock)){
                         art=x.medicamento + " con stock insuficiente";
                         me.errorMostrarMsjVenta.push(art);
                     }
@@ -1186,6 +1111,16 @@
                 title: message
                 })
             },
+            warnStock(cantidad, stock){
+                Number(cantidad)
+                Number(stock)
+                console.log('cantidad=>',cantidad);
+                console.log('stock=>',stock);
+                if (Number(cantidad)>Number(stock)) {
+                    return true
+                }
+                return false
+            }
         },
         mounted() {
             this.listarVenta(1,this.buscar,this.criterio);

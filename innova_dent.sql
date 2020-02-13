@@ -42,7 +42,7 @@ CREATE TABLE `concentraciones` (
 --
 
 INSERT INTO `concentraciones` (`id`, `nombre`, `descripcion`, `condicion`, `created_at`, `updated_at`) VALUES
-(1, '-', 'DESCRIPCION DE CONCENTRACION', 1, '2020-02-10 07:15:35', '2020-02-10 07:15:35');
+(1, '-', 'DESCRIPCION DE marca', 1, '2020-02-10 07:15:35', '2020-02-10 07:15:35');
 
 -- --------------------------------------------------------
 

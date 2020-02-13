@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="./assets/css/feathericon.css">
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-
+    <script src="sweetalert2.all.min.js"></script>
+<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
     <!--Morris Chart-->
     {{-- <link rel="stylesheet" href="assets/libs/morris-js/morris.css" /> --}}
 
@@ -27,7 +29,7 @@
 
 <body>
 
-    
+
     @include('templates.header')
     <!-- ============================================================== -->
     <!-- Start Page Content here -->
@@ -36,7 +38,7 @@
     <div class="wrapper">
         <div class="container-fluid">
 
-            
+
             <div class="row">
                 <div class="col-12">
                     <div class="pagina-titulo">
@@ -50,7 +52,7 @@
                     </div>
                 </div>
             </div>
-            
+
 
             <div class="row">
 
@@ -62,13 +64,13 @@
                                 <i class="mdi mdi-dots-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
                             </div>
                         </div>
@@ -99,13 +101,13 @@
                                 <i class="mdi mdi-dots-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
                             </div>
                         </div>
@@ -138,13 +140,13 @@
                                 <i class="mdi mdi-dots-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
                             </div>
                         </div>
@@ -174,13 +176,13 @@
                                 <i class="mdi mdi-dots-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
                             </div>
                         </div>
@@ -216,13 +218,13 @@
                                 <i class="mdi mdi-dots-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
                             </div>
                         </div>
@@ -251,13 +253,13 @@
                                 <i class="mdi mdi-dots-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
                             </div>
                         </div>
@@ -274,13 +276,13 @@
                                 <i class="mdi mdi-dots-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
                             </div>
                         </div>
@@ -364,13 +366,13 @@
                                 <i class="mdi mdi-dots-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
                             </div>
                         </div>
@@ -440,13 +442,13 @@
                                 <i class="mdi mdi-dots-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                
+
                                 <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
                             </div>
                         </div>
@@ -525,7 +527,7 @@
 
             </div>
 
-        </div> 
+        </div>
     </div>
 
     <!-- end wrapper -->

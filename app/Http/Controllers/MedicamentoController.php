@@ -26,7 +26,7 @@ class MedicamentoController extends Controller
             $criterio = 'medicamentos.codigo';
         }
         if ($buscar == '') {
-             
+
             $medicamentos = Medicamento::join('productos','productos.id','=','medicamentos.producto_id')
             ->join('presentaciones','presentaciones.id','=','medicamentos.presentacion_id')
             ->join('concentraciones','concentraciones.id','=','medicamentos.concentracion_id')
@@ -43,7 +43,7 @@ class MedicamentoController extends Controller
                 'medicamentos.presentacion_id',
                 'presentaciones.nombre as presentacion',
                 'medicamentos.concentracion_id',
-                'concentraciones.nombre as concentracion',
+                'concentraciones.nombre as marca',
                 'medicamentos.laboratorio_id',
                 'laboratorios.nombre as laboratorio'
                 )
@@ -65,12 +65,12 @@ class MedicamentoController extends Controller
                 'medicamentos.presentacion_id',
                 'presentaciones.nombre as presentacion',
                 'medicamentos.concentracion_id',
-                'concentraciones.nombre as concentracion',
+                'concentraciones.nombre as marca',
                 'medicamentos.laboratorio_id',
                 'laboratorios.nombre as laboratorio'
                 )
             ->where($criterio, 'like', '%'.$buscar.'%')->orderBy('nombre','asc')->paginate(10);
-            
+
         }
 
         return [
@@ -102,7 +102,7 @@ class MedicamentoController extends Controller
             # code...
         }
         if ($buscar == '') {
-             
+
             $medicamentos = Medicamento::join('productos','productos.id','=','medicamentos.producto_id')
             ->join('presentaciones','presentaciones.id','=','medicamentos.presentacion_id')
             ->join('concentraciones','concentraciones.id','=','medicamentos.concentracion_id')
@@ -121,7 +121,7 @@ class MedicamentoController extends Controller
                 'medicamentos.presentacion_id',
                 'presentaciones.nombre as presentacion',
                 'medicamentos.concentracion_id',
-                'concentraciones.nombre as concentracion',
+                'concentraciones.nombre as marca',
                 'medicamentos.laboratorio_id',
                 'detalle_ingresos.fecha_vencimiento',
                 'detalle_ingresos.precio',
@@ -147,7 +147,7 @@ class MedicamentoController extends Controller
                 'medicamentos.presentacion_id',
                 'presentaciones.nombre as presentacion',
                 'medicamentos.concentracion_id',
-                'concentraciones.nombre as concentracion',
+                'concentraciones.nombre as marca',
                 'medicamentos.laboratorio_id',
                 'detalle_ingresos.fecha_vencimiento',
                 'detalle_ingresos.precio',
@@ -155,7 +155,7 @@ class MedicamentoController extends Controller
                 'laboratorios.nombre as laboratorio'
                 )
             ->where($criterio, 'like', '%'.$buscar.'%')->orderBy('medicamentos.id','desc')->paginate(10);
-            
+
         }
 
         return [
@@ -171,7 +171,7 @@ class MedicamentoController extends Controller
         ];
         // return $medicamentos;
     }
-    
+
 
     public function store(Request $request)
     {
@@ -218,5 +218,5 @@ class MedicamentoController extends Controller
     {
         return Medicamento::all();
     }
-    
+
 }

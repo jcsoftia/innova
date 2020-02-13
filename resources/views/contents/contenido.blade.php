@@ -15,7 +15,7 @@
         <presentacion-component :ruta="ruta"></presentacion-component>
     </template>
     <template v-if="menu==4">
-        <concentracion-component :ruta="ruta"></concentracion-component>
+        <marca-component :ruta="ruta"></marca-component>
     </template>
     <template v-if="menu==5">
         <laboratorio-component :ruta="ruta"></laboratorio-component>

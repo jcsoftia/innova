@@ -489,7 +489,7 @@ overflow: hidden;
         justify-content: center;
         width:100%;
     }
-    .text-error{
+    .text-error, .text-error *{
         color:red !important;
         font-weight:bold;
 

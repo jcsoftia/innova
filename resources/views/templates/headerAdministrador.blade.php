@@ -34,7 +34,7 @@
                         </li>
 
                         <li @click="menu=4" class=" ">
-                           <a href="#"> Concentraciones </a>
+                           <a href="#"> Marca </a>
                         </li>
 
 
