@@ -259,6 +259,18 @@
                                                     ></v-text-field>
                                                 </v-flex>
                                                 <v-flex xs12 sm6>
+                                                    <v-text-field
+                                                        v-model="stock"
+                                                        label="Stock"
+                                                        type="number"
+                                                        :precision="2"
+                                                        :step="0.1"
+                                                        :min="0"
+                                                        filled
+                                                        rounded
+                                                    ></v-text-field>
+                                                </v-flex>
+                                                <v-flex xs12 sm6>
                                                     <v-autocomplete
 
                                                         label='Seleccione Producto'
@@ -401,7 +413,8 @@
                 offset:3,
                 criterio:'nombre',
                 buscar: '',
-                buscarStock: ''
+                buscarStock: '',
+                stock: 0
             }
         },
         computed:{
@@ -536,6 +549,7 @@
                         presentacion_id: me.presentacion.id,
                         concentracion_id: me.marca.id,
                         laboratorio_id: me.laboratorio.id,
+                        stock: me.stock
                     })
                     .then(function (response) {
                         me.nombre='';
@@ -596,6 +610,7 @@
                                     me.presentacion = {'id':data.presentacion_id, 'nombre':data.presentacion};
                                     me.marca = {'id':data.concentracion_id, 'nombre':data.marca};
                                     me.laboratorio = {'id':data.laboratorio_id, 'nombre':data.laboratorio};
+                                    me.stock = data.stock;
                                     break
                                 }
 

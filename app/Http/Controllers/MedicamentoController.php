@@ -199,6 +199,7 @@ class MedicamentoController extends Controller
         $medicamento->presentacion_id = $request->presentacion_id;
         $medicamento->concentracion_id = $request->concentracion_id;
         $medicamento->laboratorio_id = $request->laboratorio_id;
+        $medicamento->stock = $request->stock;
         $medicamento->save();
     }
 

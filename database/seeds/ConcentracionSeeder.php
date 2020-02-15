@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\marca;
+use App\Models\Concentracion;
 class ConcentracionSeeder extends Seeder
 {
     /**
@@ -12,7 +12,7 @@ class ConcentracionSeeder extends Seeder
     public function run()
     {
 
-        marca::create([
+        Concentracion::create([
             'nombre'	=>  strtoupper("-"),
             'descripcion' => strtoupper('descripcion de marca'),
             'condicion' => 1
