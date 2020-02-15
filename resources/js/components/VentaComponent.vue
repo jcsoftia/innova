@@ -268,7 +268,6 @@
                                             </td>
                                             <td v-text="medicamento.codigo"></td>
                                             <td v-text="medicamento.nombre + ' '+ medicamento.marca + ' ' + medicamento.laboratorio + ' - '+medicamento.presentacion "></td>
-                                            <td v-text="medicamento.nombre_categoria"></td>
                                             <td v-text="medicamento.precio_venta"></td>
                                             <td v-text="medicamento.stock"></td>
                                             <td>
@@ -308,11 +307,11 @@
                                             <td v-text="detalle.medicamento">
                                             </td>
                                             <td>
-                                                <input v-model="detalle.precio" type="number" class="form-control">
+                                                <input v-model="detalle.precio" type="number" class="form-control" readonly>
                                             </td>
                                             <td>
                                                 <span style="color:red !important" v-show="(warnStock(detalle.cantidad,detalle.stock))">Stock: {{detalle.stock}}</span>
-                                                <input v-model="detalle.cantidad" type="number" class="form-control">
+                                                <input v-model="detalle.cantidad" type="number" class="form-control" >
                                             </td>
                                             <td>
                                                 <span style="color:red;" v-show="detalle.descuento>(detalle.precio*detalle.cantidad)">Descuento superior</span>
@@ -888,7 +887,7 @@
                         me.errorMostrarMsjVenta.push(art);
                     }
                 });
-
+                console.log(me.arrayDetalle)
                 if (me.cliente=="") me.errorMostrarMsjVenta.push("Seleccione un Cliente");
                 if (me.tipo_comprobante==0) me.errorMostrarMsjVenta.push("Seleccione el comprobante");
                 if (!me.num_comprobante) me.errorMostrarMsjVenta.push("Ingrese el número de comprobante");
@@ -1117,6 +1116,16 @@
                 console.log('cantidad=>',cantidad);
                 console.log('stock=>',stock);
                 if (Number(cantidad)>Number(stock)) {
+                    return true
+                }
+                return false
+            },
+            warnDescuento(descuento, precio, costo){
+
+                console.log('descuento=>',descuento);
+                console.log('precio=>',precio);
+                console.log('precio=>',precio);
+                if (parseFloat(descuento)>(parseFloat(precio)-parseFloat(costo))) {
                     return true
                 }
                 return false
