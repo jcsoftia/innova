@@ -78,6 +78,7 @@
                                                         <th>Presentacion</th>
                                                         <th>Laboratorio</th>
                                                         <th>Stock</th>
+                                                        <th>Precio Compra</th>
                                                         <th>Precio Venta</th>
                                                         <th>Estado</th>
                                                         <th>Accion</th>
@@ -94,6 +95,7 @@
                                                         <td v-text="medicamento.presentacion"></td>
                                                         <td v-text="medicamento.laboratorio"></td>
                                                         <td class="f-high font-weight-bold blue--text" v-text="medicamento.stock"></td>
+                                                        <td class="f-high font-weight-bold teal--text" v-text="'S/'+medicamento.precio_compra"></td>
                                                         <td class="f-high font-weight-bold teal--text" v-text="'S/'+medicamento.precio_venta"></td>
                                                         <td class="text-center">
                                                             <div v-if="medicamento.condicion == 1">
@@ -249,7 +251,19 @@
                                                 <v-flex xs12 sm6>
                                                     <v-text-field
                                                         v-model="precio_venta"
-                                                        label="Precio"
+                                                        label="Precio de venta"
+                                                        type="number"
+                                                        :precision="2"
+                                                        :step="0.1"
+                                                        :min="0"
+                                                        filled
+                                                        rounded
+                                                    ></v-text-field>
+                                                </v-flex>
+                                                <v-flex xs12 sm6>
+                                                    <v-text-field
+                                                        v-model="precio_compra"
+                                                        label="Precio de compra"
                                                         type="number"
                                                         :precision="2"
                                                         :step="0.1"
@@ -377,6 +391,7 @@
                 nombre: '',
                 busqueda: ['codigo','nombre','descripcion'],
                 precio_venta: 0.0,
+                precio_compra: 0.0,
                 producto: {},
                 marca: {},
                 presentacion: {},
@@ -544,6 +559,7 @@
                         id:me.medicamento_id,
                         codigo: me.codigo,
                         precio: parseFloat(me.precio_venta),
+                        costo: parseFloat(me.precio_compra),
                         descripcion: me.descripcion,
                         producto_id: me.producto.id,
                         presentacion_id: me.presentacion.id,
@@ -606,6 +622,7 @@
                                     me.descripcion = data.descripcion;
                                     me.codigo = data.codigo;
                                     me.precio_venta = data.precio_venta;
+                                    me.costo = data.precio_compra;
                                     me.producto = {'id':data.producto_id, 'nombre':data.producto};
                                     me.presentacion = {'id':data.presentacion_id, 'nombre':data.presentacion};
                                     me.marca = {'id':data.concentracion_id, 'nombre':data.marca};

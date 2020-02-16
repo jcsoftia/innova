@@ -208,6 +208,7 @@ class IngresoController extends Controller
                 $detalle->save();
                 $medi = Medicamento::find($det['idmedicamento']);
                 $medi->precio_venta=$det['precio'];
+                $medi->precio_compra=$det['costo'];
                 $medi->save();
             }
 

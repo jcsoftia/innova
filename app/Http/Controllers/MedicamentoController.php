@@ -35,6 +35,7 @@ class MedicamentoController extends Controller
                 'medicamentos.id',
                 'medicamentos.codigo',
                 'medicamentos.precio_venta',
+                'medicamentos.precio_compra',
                 'medicamentos.stock',
                 'medicamentos.descripcion',
                 'medicamentos.condicion',
@@ -57,6 +58,7 @@ class MedicamentoController extends Controller
                 'medicamentos.id',
                 'medicamentos.codigo',
                 'medicamentos.precio_venta',
+                'medicamentos.precio_compra',
                 'medicamentos.stock',
                 'medicamentos.descripcion',
                 'medicamentos.condicion',
@@ -193,6 +195,7 @@ class MedicamentoController extends Controller
         $medicamento = Medicamento::findOrFail($request->id);
         $medicamento->codigo = strtoupper($request->codigo);
         $medicamento->precio_venta = $request->precio;
+        $medicamento->precio_compra = $request->costo;
         $medicamento->descripcion = strtoupper($request->descripcion);
         $medicamento->condicion = 1;
         $medicamento->producto_id = $request->producto_id;

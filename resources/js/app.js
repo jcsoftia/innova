@@ -49,9 +49,9 @@ const app = new Vue({
     el: "#app",
     data: {
         menu: 0,
-        // ruta: "http://innova.deliverygasperu.com/public/"
+            ruta: "http://innova.deliverygasperu.com/public/"
         // ruta: '/innova_dent/public'
-            ruta: "http://127.0.0.1:8000"
+            // ruta: "http://127.0.0.1:8000"
 
     }
 });

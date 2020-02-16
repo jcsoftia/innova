@@ -13,11 +13,12 @@ class CreateMedicamentosTable extends Migration
      */
     public function up()
     {
-        
+
         Schema::create('medicamentos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('codigo');
             $table->double('precio_venta', 3)->nullable();
+            $table->double('precio_compra', 3)->default(0)->nullable();
             $table->double('stock', 3)->nullable();
             $table->string('descripcion')->nullable();
             $table->boolean('condicion');

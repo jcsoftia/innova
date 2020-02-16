@@ -269,6 +269,8 @@
                                                 <th>Opciones</th>
                                                 <th>Código</th>
                                                 <th>Nombre</th>
+
+                                                <th>Precio de Compra Anterior</th>
                                                 <th>Precio Venta Actual</th>
 
                                                 <th>Stock</th>
@@ -284,6 +286,8 @@
                                                 </td>
                                                 <td v-text="med.codigo"></td>
                                                 <td v-text="med.nombre + ' '+ med.marca + ' '+med.presentacion"></td>
+
+                                                <td v-text="med.precio_compra"></td>
                                                 <td v-text="med.precio_venta"></td>
                                                 <td v-text="med.stock"></td>
                                                 <td>

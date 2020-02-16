@@ -314,7 +314,8 @@
                                                 <input v-model="detalle.cantidad" type="number" class="form-control" >
                                             </td>
                                             <td>
-                                                <span style="color:red;" v-show="detalle.descuento>(detalle.precio*detalle.cantidad)">Descuento superior</span>
+                                                <span style="color:red !important" v-show="warnDescuento(detalle.descuento, detalle.precio*detalle.cantidad, detalle.costo*detalle.cantidad)">Descuento excede</span>
+                                                <!-- <span style="color:red;" v-show="detalle.descuento>(detalle.precio*detalle.cantidad)">Descuento superior</span> -->
                                                 <input v-model="detalle.descuento" type="number" class="form-control">
                                             </td>
                                             <td>
@@ -610,6 +611,7 @@
                 codigo: '',
                 medicamento: '',
                 precio: 0,
+                costo: 0,
                 cantidad:1,
                 descuento: 0,
                 stock:0,
@@ -717,6 +719,7 @@
                         me.medicamento=me.arraymedicamento[0]['nombre']+me.arraymedicamento[0]['marca']+me.arraymedicamento[0]['presentacion'];
                         me.idmedicamento=me.arraymedicamento[0]['id'];
                         me.precio=me.arraymedicamento[0]['precio_venta'];
+                        me.costo=me.arraymedicamento[0]['precio_compra'];
                         me.stock=me.arraymedicamento[0]['stock'];
                     }
                     else{
@@ -781,7 +784,8 @@
                                 cantidad: me.cantidad,
                                 precio: me.precio,
                                 descuento: me.descuento,
-                                stock: me.stock
+                                stock: me.stock,
+                                costo: me.costo
                             });
                             me.codigo="";
                             me.idmedicamento=0;
@@ -790,6 +794,7 @@
                             me.precio=0;
                             me.descuento=0;
                             me.stock=0
+                            me.costo=0
                        }
                     }
 
@@ -814,7 +819,8 @@
                             cantidad: 1,
                             precio: data['precio_venta'],
                             descuento:0,
-                            stock:data['stock']
+                            stock:data['stock'],
+                            costo: data['precio_compra']
                         });
                     }
             },
@@ -1113,8 +1119,6 @@
             warnStock(cantidad, stock){
                 Number(cantidad)
                 Number(stock)
-                console.log('cantidad=>',cantidad);
-                console.log('stock=>',stock);
                 if (Number(cantidad)>Number(stock)) {
                     return true
                 }
@@ -1122,10 +1126,13 @@
             },
             warnDescuento(descuento, precio, costo){
 
-                console.log('descuento=>',descuento);
+                if (parseFloat(descuento) == NaN) {
+                    descuento = 0
+                }
+                console.log('descuento=>',parseFloat(descuento));
                 console.log('precio=>',precio);
-                console.log('precio=>',precio);
-                if (parseFloat(descuento)>(parseFloat(precio)-parseFloat(costo))) {
+                console.log('costo=>',costo);
+                if (parseFloat(descuento)>(parseFloat(precio)-parseFloat(costo)*1.2)) {
                     return true
                 }
                 return false
